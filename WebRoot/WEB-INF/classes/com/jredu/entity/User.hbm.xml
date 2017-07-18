@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- package对应实体类的包 -->
+<hibernate-mapping>
+	<!-- 对应的实体类,domain对象,pojo -->
+	<class name="com.jredu.entity.User" table="h_user">
+		<id name="id" column="id" type="java.lang.Integer">
+			<!-- 主键生成策略 -->
+			<!-- 序列的形式生成主键 -->
+			<generator class="sequence">
+				<!-- 指定参数：指定序列的名称 -->
+				<param name="sequence">SEQ_M_USER</param>
+			</generator>
+		</id>
+		<property name="name" column="name" type="java.lang.String"/>
+		<property name="pwd" column="pwd" type="java.lang.String"/>
+	</class>
+	<query name="findUser">
+		<![CDATA[
+			from User where name=:name and pwd=:pwd
+		]]>
+	</query>
+</hibernate-mapping>

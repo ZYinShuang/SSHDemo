@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<!-- struts默认样式是xhtml -->
+	<!-- <constant name="struts.ui.theme" value="simple"/> -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 设置默认资源文件 -->
+	<constant name="struts.custom.i18n.resources" value="message_zh_HK"/>
+	<!-- 设置编码格式 -->
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<!-- struts结合spring的配置意思是  Struts2的action由Spring来负责进行实例化  -->
+    <constant name="struts.objectFactory" value="spring" />
+	<!-- 创建一个default包，继承自Struts2的struts-default包 -->
+	<package name="default" namespace="/test" extends="struts-default">
+		<!-- class:testAction使用的是spring当中配置的bean -->
+		<action name="test" class="testAction">
+			<result name="success">/success.jsp</result>
+			<result name="error">/fail.jsp</result>
+		</action>
+	</package>
+</struts>
